@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telefon Düzenleyici Pro</title>
+
+    <!-- SheetJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>📱 Telefon Düzenleyici Pro</h1>
+        <p>
+          Excel dosyanızı yükleyin, telefon numaralarını tek tıkla standart hale
+          getirin.
+        </p>
+      </div>
+
+      <div class="uploadCard">
+        <label class="dropArea" id="dropArea">
+          <input type="file" id="fileInput" accept=".xlsx,.xls" hidden />
+
+          <div class="uploadIcon">📂</div>
+
+          <h3 id="uploadTitle">Excel Dosyasını Seç</h3>
+
+          <p id="uploadText">
+            Dosyayı buraya sürükleyebilir veya tıklayarak seçebilirsiniz.
+          </p>
+        </label>
+      </div>
+
+      <div class="settingsCard">
+        <h2>Ayarlar</h2>
+
+        <div class="setting">
+          <label>Ülke Kodu</label>
+
+          <div class="countryRow">
+            <select id="countrySelect">
+              <option value="90">🇹🇷 Türkiye (+90)</option>
+              <option value="49">🇩🇪 Almanya (+49)</option>
+              <option value="44">🇬🇧 İngiltere (+44)</option>
+              <option value="1">🇺🇸 Amerika (+1)</option>
+              <option value="33">🇫🇷 Fransa (+33)</option>
+              <option value="39">🇮🇹 İtalya (+39)</option>
+              <option value="34">🇪🇸 İspanya (+34)</option>
+              <option value="manual">Diğer...</option>
+            </select>
+
+            <input type="text" id="countryCode" placeholder="Ülke kodu" />
+          </div>
+        </div>
+
+        <div class="setting">
+          <label>Telefon Kolonu</label>
+
+          <select id="phoneColumnSelect">
+            <option value="">
+              Excel yüklendiğinde kolonlar burada görünecek
+            </option>
+          </select>
+        </div>
+
+        <div class="options">
+          <label>
+            <input type="checkbox" id="removeDuplicates" checked />
+
+            Tekrarlayan numaraları kaldır
+          </label>
+
+          <label>
+            <input type="checkbox" id="removeInvalid" checked />
+
+            Geçersiz numaraları kaldır
+          </label>
+
+          <label>
+            <input type="checkbox" id="keepExistingCountryCode" checked />
+
+            Mevcut ülke kodunu koru
+          </label>
+          <label>
+            <input type="checkbox" id="removeForeignNumbers" />
+
+            Sadece seçilen ülke kodundaki numaraları kabul et
+          </label>
+        </div>
+
+        <button id="convertBtn">
+          <span id="convertText"> 🚀 Dönüştür </span>
+        </button>
+      </div>
+
+      <div class="progressCard">
+        <div class="progressText">İşlem Durumu</div>
+
+        <div class="progressBar">
+          <div class="progressFill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="statCard">
+          <h3 id="totalCount">0</h3>
+
+          <span>Toplam</span>
+        </div>
+
+        <div class="statCard">
+          <h3 id="validCount">0</h3>
+
+          <span>Geçerli</span>
+        </div>
+
+        <div class="statCard">
+          <h3 id="duplicateCount">0</h3>
+
+          <span>Duplicate</span>
+        </div>
+
+        <div class="statCard">
+          <h3 id="invalidCount">0</h3>
+
+          <span>Geçersiz</span>
+        </div>
+      </div>
+
+      <div class="previewCard">
+        <h2 id="previewTitle">Önizleme</h2>
+
+        <p id="previewInfo">Henüz işlem yapılmadı.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Eski Numara</th>
+
+              <th>Yeni Numara</th>
+
+              <th>Durum</th>
+            </tr>
+          </thead>
+
+          <tbody id="previewBody"></tbody>
+        </table>
+      </div>
+
+      <div class="errorCard">
+        <h2>Geçersiz Numaralar</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Satır</th>
+
+              <th>Telefon</th>
+
+              <th>Sebep</th>
+            </tr>
+          </thead>
+
+          <tbody id="errorBody"></tbody>
+        </table>
+      </div>
+
+      <div class="downloadArea">
+        <button id="downloadBtn" disabled>📥 Düzenlenmiş Excel'i İndir</button>
+      </div>
+    </div>
+    <div id="toast">
+      <div class="toastIcon">✅</div>
+
+      <div>
+        <strong>İşlem Tamamlandı</strong>
+
+        <div id="toastMessage">Excel başarıyla indirildi.</div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

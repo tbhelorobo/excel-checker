@@ -1,0 +1,549 @@
+/* ===========================
+   Telefon Düzenleyici PRO
+=========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0f172a;
+
+  background-image: radial-gradient(circle at top left, #1e293b 0, #0f172a 60%);
+
+  color: #f8fafc;
+
+  font-family: "Segoe UI", Arial, sans-serif;
+
+  min-height: 100vh;
+
+  padding: 40px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: auto;
+}
+
+/* HEADER */
+
+.header {
+  text-align: center;
+
+  margin-bottom: 35px;
+}
+
+.header h1 {
+  font-size: 42px;
+
+  margin-bottom: 10px;
+
+  color: white;
+}
+
+.header p {
+  color: #94a3b8;
+
+  font-size: 17px;
+}
+
+/* CARD */
+
+#previewInfo {
+  margin-top: 10px;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+}
+.uploadCard,
+.settingsCard,
+.progressCard,
+.previewCard,
+.errorCard {
+  background: #1e293b;
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  border-radius: 18px;
+
+  padding: 25px;
+
+  margin-bottom: 25px;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Upload */
+
+.dropArea {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 2px dashed #475569;
+
+  border-radius: 15px;
+
+  min-height: 230px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.dropArea:hover {
+  border-color: #22c55e;
+
+  background: #162235;
+}
+
+.dropArea.success {
+  border-color: #22c55e;
+
+  background: #0b3a20;
+}
+
+.uploadIcon {
+  font-size: 70px;
+
+  margin-bottom: 20px;
+}
+
+.dropArea h3 {
+  font-size: 24px;
+
+  margin-bottom: 8px;
+}
+
+.dropArea p {
+  color: #94a3b8;
+}
+
+/* SETTINGS */
+
+.settingsCard h2 {
+  margin-bottom: 20px;
+}
+
+.setting {
+  margin-bottom: 25px;
+}
+
+.setting label {
+  display: block;
+
+  margin-bottom: 8px;
+}
+
+.countryRow {
+  display: flex;
+
+  gap: 15px;
+}
+
+.countryRow select,
+.countryRow input {
+  flex: 1;
+}
+
+.options {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  margin-bottom: 25px;
+}
+
+.options label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  cursor: pointer;
+}
+
+/* INPUT */
+
+select,
+input[type="text"] {
+  width: 100%;
+
+  height: 48px;
+
+  background: #0f172a;
+
+  border: 1px solid #334155;
+
+  color: white;
+
+  border-radius: 10px;
+
+  padding: 0 15px;
+
+  font-size: 15px;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+
+  border-color: #22c55e;
+}
+
+/* CHECKBOX */
+
+input[type="checkbox"] {
+  width: 18px;
+
+  height: 18px;
+}
+
+/* BUTTON */
+
+button {
+  border: none;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+#convertBtn {
+  width: 100%;
+
+  height: 55px;
+
+  background: #22c55e;
+
+  color: white;
+
+  border-radius: 12px;
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  transition: 0.25s;
+}
+
+#convertBtn:hover {
+  transform: translateY(-2px);
+
+  background: #16a34a;
+}
+
+#convertBtn:disabled {
+  background: #64748b;
+
+  cursor: not-allowed;
+}
+
+#convertBtn.loading {
+  background: #0ea5e9;
+}
+
+#convertBtn.success {
+  background: #16a34a;
+}
+
+#downloadBtn {
+  width: 100%;
+
+  height: 55px;
+
+  background: #3b82f6;
+
+  color: white;
+
+  border-radius: 12px;
+
+  font-size: 17px;
+
+  font-weight: bold;
+}
+
+#downloadBtn:hover {
+  background: #2563eb;
+}
+
+#downloadBtn:disabled {
+  background: #475569;
+
+  cursor: not-allowed;
+}
+
+/* Progress */
+
+.progressText {
+  margin-bottom: 12px;
+
+  font-weight: bold;
+}
+
+.progressBar {
+  width: 100%;
+
+  height: 16px;
+
+  background: #0f172a;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.progressFill {
+  width: 0;
+
+  height: 100%;
+
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+
+  transition: 0.3s;
+}
+
+/* STATISTICS */
+
+.stats {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+
+  margin-bottom: 25px;
+}
+
+.statCard {
+  background: #1e293b;
+
+  border-radius: 15px;
+
+  text-align: center;
+
+  padding: 25px;
+  transition: 0.25s;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.statCard h3 {
+  font-size: 42px;
+
+  color: #22c55e;
+
+  margin-bottom: 8px;
+}
+
+.statCard span {
+  color: #94a3b8;
+}
+
+.statCard:nth-child(1) h3 {
+  color: #3b82f6;
+}
+
+.statCard:nth-child(2) h3 {
+  color: #22c55e;
+}
+
+.statCard:nth-child(3) h3 {
+  color: #f59e0b;
+}
+
+.statCard:nth-child(4) h3 {
+  color: #ef4444;
+}
+
+/* TABLE */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  margin-top: 20px;
+}
+
+thead {
+  background: #334155;
+}
+
+th {
+  padding: 15px;
+
+  text-align: left;
+}
+
+td {
+  padding: 14px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+tbody tr:hover {
+  background: #243244;
+}
+
+/* DOWNLOAD */
+
+.downloadArea {
+  margin-top: 30px;
+}
+
+/* BADGE */
+
+.badge {
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  font-weight: bold;
+}
+
+.badge.success {
+  background: #14532d;
+
+  color: #4ade80;
+}
+
+.badge.error {
+  background: #450a0a;
+
+  color: #f87171;
+}
+
+.badge.warning {
+  background: #78350f;
+
+  color: #fbbf24;
+}
+.success {
+  color: #22c55e;
+
+  font-weight: bold;
+}
+
+.error {
+  color: #ef4444;
+
+  font-weight: bold;
+}
+
+.warning {
+  color: #f59e0b;
+
+  font-weight: bold;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .countryRow {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 30px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+}
+
+/* Toast */
+
+#toast {
+  position: fixed;
+
+  right: 30px;
+
+  bottom: 30px;
+
+  background: #1e293b;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-left: 5px solid #22c55e;
+
+  border-radius: 12px;
+
+  padding: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-width: 320px;
+
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+
+  transform: translateX(420px);
+
+  transition: 0.35s;
+
+  z-index: 9999;
+}
+
+#toast.show {
+  transform: translateX(0);
+}
+
+.toastIcon {
+  font-size: 30px;
+}
+
+#toast strong {
+  display: block;
+
+  margin-bottom: 5px;
+}
+
+#toastMessage {
+  color: #94a3b8;
+
+  font-size: 14px;
+}
