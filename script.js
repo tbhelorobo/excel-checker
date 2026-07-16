@@ -1,5 +1,5 @@
 /* ==========================================
-   Telefon Düzenleyici PRO
+   Telefon Düzenleyici
    Bölüm 1 - Başlangıç
 ========================================== */
 
@@ -320,7 +320,7 @@ convertBtn.addEventListener("click", () => {
 });
 
 /* ==========================================
-   Telefon Düzenleyici PRO
+   Telefon Düzenleyici
    Bölüm 2 - Telefon İşlemleri
 ========================================== */
 
@@ -506,7 +506,7 @@ function resetDuplicateList() {
 }
 
 /* ==========================================
-   Telefon Düzenleyici PRO
+   Telefon Düzenleyici
    Bölüm 3 - Excel İşleme
 ========================================== */
 
@@ -646,7 +646,7 @@ function createWorkbook() {
 ========================================== */
 
 /* ==========================================
-   Telefon Düzenleyici PRO
+   Telefon Düzenleyici
    Bölüm 4 - Final
 ========================================== */
 
@@ -793,7 +793,7 @@ resetStats();
 clearTables();
 
 console.log(
-  "%cTelefon Düzenleyici PRO Hazır",
+  "%cTelefon Düzenleyici Hazır",
 
   "color:#22c55e;font-size:18px;font-weight:bold;",
 );
